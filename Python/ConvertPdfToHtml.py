@@ -15,16 +15,15 @@ import requests # pip3 install requests
 import sys
 
 # The authentication key (API Key)
-API_KEY = "jjbachtell@liberty.edu_4a9b0a1f791c0895883ce5caf098a4ef5fd6"
+API_KEY = "ENTER API KEY FROM https://app.pdf.co/ HERE"
 
 # Base URL for PDF.co Web API requests
 BASE_URL = "https://api.pdf.co/v1"
 
 print("**** PDF to HTML Converter - A Custom PDF.co API **** \nPlease verify that the source file is in the same directory as this converter.")
 
-n = 1
-
 # indefinite iteration to loop back through API after it finishes consuming
+n = 1
 while n == 1:
 
     # prompt user for PDF file to convert to HTML
@@ -59,6 +58,7 @@ while n == 1:
     # Set to $true if your document has the column layout like a newspaper.
     ColumnLayout = False
 
+    # notice to user while the API executes response and awaits response
     print("Processing. Please wait...")
 
     def main(args = None):
