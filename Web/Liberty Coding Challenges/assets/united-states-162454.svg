@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <polygon id="c" transform="scale(.0616)" points="0 -0.5 0.16246 0 -0.16246 0" fill="#fff"/>
+  <g id="b">
+   <use transform="matrix(-.80902 -.58779 .58779 -.80902 0 0)" width="1235" height="650" xlink:href="#c"/>
+   <use transform="matrix(.30902 -.95106 .95106 .30902 0 0)" width="1235" height="650" xlink:href="#c"/>
+   <use width="1235" height="650" xlink:href="#c"/>
+   <use transform="matrix(.30902 .95106 -.95106 .30902 0 0)" width="1235" height="650" xlink:href="#c"/>
+   <use transform="matrix(-.80902 .58779 -.58779 -.80902 0 0)" width="1235" height="650" xlink:href="#c"/>
+  </g>
+  <g id="e">
+   <use x="-0.252" width="1235" height="650" xlink:href="#b"/>
+   <use x="-0.126" width="1235" height="650" xlink:href="#b"/>
+   <use width="1235" height="650" xlink:href="#b"/>
+   <use x="0.126" width="1235" height="650" xlink:href="#b"/>
+   <use x="0.252" width="1235" height="650" xlink:href="#b"/>
+  </g>
+  <g id="d">
+   <use x="-0.063000001" width="1235" height="650" xlink:href="#e"/>
+   <use x="0.315" width="1235" height="650" xlink:href="#b"/>
+  </g>
+  <g id="f">
+   <use width="1235" height="650" xlink:href="#d"/>
+   <use y="0.054000001" width="1235" height="650" xlink:href="#e"/>
+   <use y="0.108" width="1235" height="650" xlink:href="#d"/>
+   <use y="0.162" width="1235" height="650" xlink:href="#e"/>
+  </g>
+  <g id="g">
+   <use y="-0.21600001" width="1235" height="650" xlink:href="#f"/>
+   <use width="1235" height="650" xlink:href="#f"/>
+   <use y="0.21600001" width="1235" height="650" xlink:href="#d"/>
+  </g>
+  <rect id="a" width="1235" height="50" fill="#bb133e"/>
+ </defs>
+ <rect y="-7.816e-14" width="900" height="600" fill="#fff"/>
+ <use transform="scale(.72874 .92308)" width="1235" height="650" xlink:href="#a"/>
+ <use transform="scale(.72874 .92308)" y="100" width="1235" height="650" xlink:href="#a"/>
+ <use transform="scale(.72874 .92308)" y="200" width="1235" height="650" xlink:href="#a"/>
+ <use transform="scale(.72874 .92308)" y="300" width="1235" height="650" xlink:href="#a"/>
+ <use transform="scale(.72874 .92308)" y="400" width="1235" height="650" xlink:href="#a"/>
+ <use transform="scale(.72874 .92308)" y="500" width="1235" height="650" xlink:href="#a"/>
+ <use transform="scale(.72874 .92308)" y="600" width="1235" height="650" xlink:href="#a"/>
+ <rect y="-7.816e-14" width="360" height="323.08" fill="#002664"/>
+ <use transform="matrix(473.68 0 0 600 180 161.54)" width="1235" height="650" xlink:href="#g"/>
+</svg>
