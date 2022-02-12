@@ -1,0 +1,35 @@
+/* body styles */
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #ffffff;
+  line-height: 1.5;
+  color: black;
+}
+
+/* sidebar styles */
+.sidebar {
+  height: 100%;
+  width: 200px;
+  position: relative;
+  left: 0;
+  top: 0;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.sidebar ol {
+  padding-left: 0;
+}
+
+.sidebar .subcategories {
+  list-style-type: disc;
+}
+
+.sidebar .subcategories a {
+  text-decoration: none;
+  color: black;
+}
+
+.sidebar .subcategories a:hover {
+  color: grey;
+}
