@@ -1,0 +1,115 @@
+<!-- 
+  Author: Justin J. Bachtell
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Justin Bachtell" />
+    <meta
+      name="description"
+      content="Easy, quick, ad-free citation generator for APA 7."
+    />
+    <meta
+      name="keywords"
+      content="HTML, CSS, JavaScript, citation, apa, american psychological association, API"
+    />
+    <title>Citation Generator</title>
+
+    <link rel="stylesheet" href="/css/styles.css" />
+
+    <link href="/dist/output.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="title">Citation Generator</h2>
+      <div class="result">
+        <div class="result__title field-title">Generated Citation</div>
+        <div class="result info right">click to copy</div>
+        <div class="result info left">copied</div>
+        <div class="result viewbox" id="result">
+          <p id="author-last"></p>
+          <p id="publisher-one"></p>
+          &nbsp;
+          <p id="author-first"></p>
+          &nbsp;
+          <p id="author-mid"></p>
+          &nbsp;
+          <p id="date"></p>
+          &nbsp;
+          <p id="title"></p>
+          &nbsp;
+          <p id="publisher-two"></p>
+          &nbsp;
+          <p id="platform-title"></p>
+          &nbsp;
+          <p id="accessdate"></p>
+          &nbsp;
+          <p id="source"></p>
+        </div>
+        <button id="copy-btn" style="--x: 0; --y: 0">
+          <i class="far fa-copy"></i>
+        </button>
+      </div>
+
+      <div class="fields">
+        <span class="fields__title field-title">Author(s)</span>
+        <div class="field">
+          <label for="firstname">Author's First Name:</label>
+          <input type="text" id="firstname" />
+        </div>
+        <div class="field">
+          <label for="midinitial">Author's Middle Initial:</label>
+          <input type="text" id="midinitial" />
+        </div>
+        <div class="field">
+          <label for="lastname">Author's Last Name:</label>
+          <input type="text" id="lastname" />
+        </div>
+      </div>
+
+      <div class="publication">
+        <span class="publication__title field-title">Publication Info</span>
+        <div class="field">
+          <label for="worktitle">Title of Work:</label>
+          <input type="text" id="worktitle" />
+        </div>
+        <div class="field">
+          <label for="platformtitle">Journal/Website Title:</label>
+          <input type="text" id="platformtitle" />
+        </div>
+        <div class="field">
+          <label for="publisher">Publisher:</label>
+          <input type="text" id="publisher" />
+        </div>
+        <div class="field">
+          <label for="publishdate">Published Date:</label>
+          <input type="date" id="publishdate" />
+        </div>
+        <div class="field">
+          <label for="dateaccessed">Date Accessed:</label>
+          <input type="date" id="dateaccessed" />
+        </div>
+        <div class="field">
+          <label for="source-url">Source URL:</label>
+          <input type="url" id="source-url" />
+        </div>
+      </div>
+
+      <button class="btn generate" id="generate">Copy Citation</button>
+    </div>
+
+    <script src="/js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,211 @@
+/********** tailwindcss **********/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/********** core styles **********/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg class='canvas' viewBox='0 0 1920 1080' preserveAspectRatio='xMaxYMid slice' xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs'%3E%3Crect width='1920' height='1080' fill='hsl(155, 65%25, 15%25)'%3E%3C/rect%3E%3Cdefs%3E%3ClinearGradient x1='0.5' y1='0' x2='0' y2='1' id='SvgjsLinearGradient1063'%3E%3Cstop stop-color='%23288a61' offset='0'%3E%3C/stop%3E%3Cstop stop-color='%23060c14' offset='0.1'%3E%3C/stop%3E%3C/linearGradient%3E%3ClinearGradient x1='0.5' y1='0' x2='0' y2='1' id='SvgjsLinearGradient1064'%3E%3Cstop stop-color='%23288a61' offset='0'%3E%3C/stop%3E%3Cstop stop-color='%23060c14' offset='0.22857142857142856'%3E%3C/stop%3E%3C/linearGradient%3E%3ClinearGradient x1='0.5' y1='0' x2='0' y2='1' id='SvgjsLinearGradient1065'%3E%3Cstop stop-color='%23288a4e' offset='0'%3E%3C/stop%3E%3Cstop stop-color='%23060e14' offset='0.3571428571428571'%3E%3C/stop%3E%3C/linearGradient%3E%3ClinearGradient x1='0.5' y1='0' x2='0' y2='1' id='SvgjsLinearGradient1066'%3E%3Cstop stop-color='%23c0f2dd' offset='0'%3E%3C/stop%3E%3Cstop stop-color='%234280d7' offset='0.48571428571428565'%3E%3C/stop%3E%3C/linearGradient%3E%3ClinearGradient x1='0.5' y1='0' x2='0' y2='1' id='SvgjsLinearGradient1067'%3E%3Cstop stop-color='%23c0f2d3' offset='0'%3E%3C/stop%3E%3Cstop stop-color='%23429ed7' offset='0.6142857142857142'%3E%3C/stop%3E%3C/linearGradient%3E%3ClinearGradient x1='0.5' y1='0' x2='0' y2='1' id='SvgjsLinearGradient1068'%3E%3Cstop stop-color='%23c0f2dd' offset='0'%3E%3C/stop%3E%3Cstop stop-color='%234280d7' offset='0.7428571428571429'%3E%3C/stop%3E%3C/linearGradient%3E%3ClinearGradient x1='0.5' y1='0' x2='0' y2='1' id='SvgjsLinearGradient1069'%3E%3Cstop stop-color='%23c0f2d3' offset='0'%3E%3C/stop%3E%3Cstop stop-color='%23429ed7' offset='0.8714285714285713'%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0,-549.5094383567302C44.27269988020006,-537.9245140963146,180.0537854675514,-496.86849477432327,265.63619928120033,-479.99989279423636C351.2186130948493,-463.13129081414945,441.7297779559889,-473.4165050005684,513.4944828818935,-448.2978264762089C585.2591878077982,-423.1791479518494,622.5802653276006,-362.4047393416083,696.2244288366282,-329.2878216480794C769.8685923456559,-296.17090395455045,874.8102395373037,-265.28059130258674,955.3594639360593,-249.59632031503514C1035.908688334815,-233.91204932748354,1099.6971093326156,-254.72307424622218,1179.519775229162,-235.1821957227697C1259.3424411257083,-215.64131719931723,1355.2820425307584,-159.7796885408986,1434.2954593153381,-132.35104917432022C1513.3088760999178,-104.92240980774184,1572.649519155863,-91.08396132623109,1653.60027593664,-70.61035952329942C1734.551032717417,-50.136757720367754,1875.6000459894399,-19.692925217825092,1920,-9.509438356730229L 1920 1080 L 0 1080 Z' fill='url(&quot;%23SvgjsLinearGradient1063&quot;)'%3E%3C/path%3E%3Cpath d='M0,-459.9192065383977C53.939581534896085,-447.2169696611286,214.18695002404803,-416.4992670819868,323.6374892093765,-383.7057852747831C433.08802839470496,-350.9123034675795,549.8335421974249,-291.69805248458437,656.7032351119707,-263.15831569517593C763.5729280265165,-234.61857890576746,861.4615357997404,-235.57422670583966,964.855646696651,-212.4673645383324C1068.2497575935615,-189.36050237082512,1166.6542360631177,-166.4685204294959,1277.0679004934343,-124.51714269013233C1387.481564923751,-82.56576495076877,1520.1822833607894,2.7602934916075412,1627.3376332785504,39.24090189784903C1734.4929831963113,75.72151030409051,1871.2229388797584,85.17890677240534,1920,94.3665077473166L 1920 1080 L 0 1080 Z' fill='url(&quot;%23SvgjsLinearGradient1064&quot;)'%3E%3C/path%3E%3Cpath d='M0,-315.44942343610643C58.163297770499504,-290.3398267038068,227.30629079224514,-199.58593195138138,348.97978662299704,-164.79184304230878C470.65328245374894,-129.99775413323619,601.8123315785631,-138.4992448303659,730.0409749845114,-106.68488998167086C858.2696183904598,-74.87053513297583,980.7612500773716,-22.182319407331832,1118.3516470586867,26.094286049861452C1255.9420440400017,74.37089150705474,1421.9752980488497,145.13678958057875,1555.583356872402,182.97474276148887C1689.1914156959542,220.812695942399,1859.263892812067,241.4307947396833,1920,253.12200513532218L 1920 1080 L 0 1080 Z' fill='url(&quot;%23SvgjsLinearGradient1065&quot;)'%3E%3C/path%3E%3Cpath d='M0,-166.93761292607078C87.45167132459294,-144.9690104806396,368.24255836575,-88.99061168019898,524.7100279475576,-35.125998253483694C681.1774975293652,18.7386151732316,784.2944462773684,101.72182836479197,938.8048174908456,156.25006763422098C1093.315188704323,210.77830690365,1288.2397248102288,248.76519364694846,1451.7722552284213,292.04343736309033C1615.3047856466137,335.3216810792322,1841.9620425380701,395.27351450307515,1920,415.91952993107213L 1920 1080 L 0 1080 Z' fill='url(&quot;%23SvgjsLinearGradient1066&quot;)'%3E%3C/path%3E%3Cpath d='M0,-27.78847478250961C65.7547691147248,-2.540577275837748,262.9809899194603,82.93763573723109,394.5286146883488,123.69891025752156C526.0762394572373,164.46018477781203,669.7436904540297,183.42712199286225,789.2857486133312,216.77917233923324C908.8278067726327,250.13122268560423,980.4942663941797,282.8009301521796,1111.7809636441582,323.81121233574754C1243.0676608941367,364.8214945193155,1442.3027593872287,421.9170037698741,1577.0059321132023,462.84086544064075C1711.709104839176,503.7647271114074,1862.8343220188672,551.6021295403964,1920,569.3543823603476L 1920 1080 L 0 1080 Z' fill='url(&quot;%23SvgjsLinearGradient1067&quot;)'%3E%3C/path%3E%3Cpath d='M0,71.14684103892338C48.70890699254917,91.53821889548705,180.51349738081632,159.79871142796046,292.253441955295,193.49510817830534C403.99338652977366,227.19150492865023,564.5363691533395,243.94271802710523,670.4396674468719,273.3252215409927C776.3429657404043,302.70772505488014,828.510910506306,335.6800474478375,927.6732317164898,369.7901292616301C1026.8355529266735,403.9002110754227,1149.2673049003536,442.91427798380136,1265.4135947079744,477.98571242374834C1381.5598845155953,513.0571468636954,1515.4532363468777,546.1204525606876,1624.5509705622153,580.218735901312C1733.648704777553,614.3170192419365,1870.7584950937025,665.515966373131,1920,682.5754124674949L 1920 1080 L 0 1080 Z' fill='url(&quot;%23SvgjsLinearGradient1068&quot;)'%3E%3C/path%3E%3Cpath d='M0,226.12814139507714C40.6830911869938,242.13205881698786,156.069732532084,291.2728705110706,244.0985471219628,322.15164592654156C332.1273617118416,353.0304213420125,425.2616209791111,386.1544487571766,528.1728875392729,411.4007938879028C631.0841540994347,436.647139018629,761.8105431189626,449.3780634656559,861.5661464829335,473.62971671089883C961.3217498469044,497.8813699561418,1044.4618582623955,527.8209398799193,1126.7065077230977,556.9107133593606C1208.9511571838,586.0004868388019,1267.5438903031668,607.5742649186918,1355.0340432471476,648.1683575875467C1442.5241961911283,688.7624502564015,1557.486432594841,766.5295911188537,1651.647425386983,800.4752693724897C1745.808418179125,834.4209476261258,1875.2745708978305,843.2812341532174,1920,851.8424271093629L 1920 1080 L 0 1080 Z' fill='url(&quot;%23SvgjsLinearGradient1069&quot;)'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+/********** element styles **********/
+
+button {
+  border: 0;
+  outline: 0;
+}
+
+.container {
+  margin: 40px 0;
+  width: 400px;
+  padding: 10px 25px;
+  background-color: rgba(27, 64, 97, 0.877);
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.45), 0 4px 8px rgba(0, 0, 0, 0.35),
+    0 8px 12px rgba(0, 0, 0, 0.15);
+  font-family: "Montserrat", sans-serif;
+}
+
+h2.title {
+  font-size: 1.75rem;
+  margin: 10px -5px;
+  margin-bottom: 15px;
+  color: rgb(255, 255, 255);
+}
+
+.result {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 7px;
+}
+
+#result {
+  justify-content: center;
+}
+
+#result p {
+  display: inline-block;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.result.info.right {
+  right: 8px;
+}
+
+.result.info.left {
+  left: 8px;
+}
+
+.result.info {
+  position: absolute;
+  bottom: 4px;
+  color: black;
+  font-size: 0.8rem;
+  transition: all 150ms ease-in-out;
+  opacity: 0;
+}
+
+.result.viewbox {
+  width: 100%;
+  height: 100%;
+  background-color: aliceblue;
+  border-radius: 10px;
+  color: black;
+  text-align: center;
+  line-height: 23px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  cursor: not-allowed;
+  user-select: none;
+}
+
+#copy-btn {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: 38px;
+  height: 38px;
+  background-color: black;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 350ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  z-index: 2;
+}
+
+#copy-btn:active {
+  box-shadow: 0 0 0 200px rgba(255, 255, 255, 0.08);
+}
+
+#copy-btn:hover {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.35);
+}
+
+.field-title {
+  left: 8px;
+  font-weight: 800;
+  color: rgba(216, 216, 216, 0.651);
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  pointer-events: none;
+  user-select: none;
+  margin-bottom: 5px;
+}
+
+.field-title::before,
+.field-title::after {
+  position: absolute;
+  color: black;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.fields {
+  position: relative;
+  height: auto;
+  widows: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  position: relative;
+  width: 100%;
+  height: 45px;
+  background-color: rgba(207, 231, 253, 0.781);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px 25px;
+  color: black;
+  margin-bottom: 8px;
+}
+
+.field label {
+  font-size: 0.75rem;
+  float: left;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+.field input {
+  height: 30px;
+  font-size: 1rem;
+  width: 80%;
+  float: right;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+}
+
+.field input:active {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.45), 0 4px 8px rgba(0, 0, 0, 0.35),
+    0 8px 12px rgba(0, 0, 0, 0.15);
+  transition: 0.5s ease-in-out;
+}
+
+.btn.generate {
+  user-select: none;
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 10px 0;
+  border-radius: 10px;
+  color: black;
+  background-image: linear-gradient(135deg, #d3eef7 0%, #a3dbe6 100%);
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.btn.generate:active {
+  transform: translateY(-3%);
+  box-shadow: 0px 4px 10px rgba(59, 59, 59, 0.164);
+  transition: all 0.3s ease-in-out;
+}
+
+.btn.generate:hover {
+  box-shadow: 0px 4px 10px rgba(59, 59, 59, 0.164);
+  transition: all 0.3s ease-in-out;
+}
