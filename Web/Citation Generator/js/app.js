@@ -27,19 +27,59 @@ const publishDate = document.getElementById("publishdate").value;
 const accessDate = document.getElementById("dateaccessed").value;
 const sourceURL = document.getElementById("source-url").value;
 const citationStyle = document.getElementById("citation-style");
-
-/*
-if (document.getElementById("publishdate").value == "") {
-  const publishDate = (document.getElementById("publishdate").value = "n.d.");
-  return publishDate;
-} else {
-  const publishDate = document.getElementById("publishdate").value;
-  return publishDate;
-}
-*/
+const resetForm = document.getElementById("reset-form");
 
 // Button to generate the citation
 const generateBtn = document.getElementById("generate");
+
+/*
+const generateCitation = () => {
+  styles = citationStyle.value;
+  switch (styles) {
+    case "apa":
+      citationStyleAPA();
+      break;
+  }
+};
+*/
+
+// Display citation with chosen citation style
+window.onload = generateCitation = () => {
+  result.innerHTML = "";
+  styles = citationStyle.value;
+  switch (styles) {
+    case "apa":
+      citationStyleAPA();
+      break;
+  }
+};
+
+/*
+// Display citation with chosen citation style
+generateBtn.addEventListener("click", () => {
+  styles = citationStyle.value;
+  switch (styles) {
+    case "apa":
+      citationStyleAPA();
+      break;
+  }
+});
+*/
+
+// Function to refresh page prior to clicking generate citation
+const refreshPage = () => {
+  if (!workTitle) {
+    document.location.reload();
+  } else {
+    document.location.reload();
+  }
+};
+
+const clearPage = () => {
+  result.innerHTML = "";
+  firstName.reset();
+  middleInitial.reset();
+};
 
 // Button to copy the citation
 //const copyBtn = document.getElementById("copy-btn");
@@ -50,37 +90,105 @@ const generateBtn = document.getElementById("generate");
 // Text shown after copy button is clicked
 //const copiedInfo = document.querySelector(".result.info.left");
 
-const citationAPA = `${lastName}, ${firstName} ${middleInitial}. (${publishDate}). ${workTitle}. ${platformTitle}. ${publisher}. Retrieved on ${accessDate} from ${sourceURL}.`;
-
-generateBtn.addEventListener("click", () => {
-  let styles = citationStyle.value;
-  // result.innerText += citationAPA;
-  switch (styles) {
-    case "apa":
-      // no author
-      if (!lastName) {
+// APA Citation Style
+const citationStyleAPA = (event) => {
+  if (!lastName && !workTitle) {
+    result.innerHTML = "";
+  } else {
+    // no author
+    if (!lastName) {
+      // no publish date
+      if (!publishDate) {
+        // no platform title
+        if (!platformTitle) {
+          result.innerHTML = `${publisher}. (n.d.). <i>${workTitle}</i>. Retrieved on ${accessDate} from ${sourceURL}.`;
+          // platform title included
+        } else {
+          result.innerHTML = `${publisher}. (n.d.). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+        }
+        // publish date included
+      } else {
+        // no platform title
+        if (!platformTitle) {
+          result.innerHTML = `${publisher}. (${publishDate}). <i>${workTitle}</i>. Retrieved on ${accessDate} from ${sourceURL}.`;
+          // platform title included
+        } else {
+          result.innerHTML = `${publisher}. (${publishDate}). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+        }
+      }
+      // author included
+    } else {
+      // no first name
+      if (!firstName) {
         // no publish date
         if (!publishDate) {
           // no platform title
           if (!platformTitle) {
-            result.innerText = `${workTitle}. (n.d.). ${workTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+            result.innerHTML = `${lastName}. (n.d.). <i>${workTitle}</i>. Retrieved on ${accessDate} from ${sourceURL}.`;
             // platform title included
           } else {
-            result.innerText = `${workTitle}. (n.d.). ${workTitle}. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+            result.innerHTML = `${lastName}. (n.d.). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
           }
           // publish date included
         } else {
-          result.innerText = `${workTitle}. (${publishDate}).`;
+          // no platform title
+          if (!platformTitle) {
+            result.innerHTML = `${lastName}. ${publishDate}. <i>${workTitle}</i>. Retrieved on ${accessDate} from ${sourceURL}.`;
+            // platform title included
+          } else {
+            result.innerHTML = `${lastName}. ${publishDate}. <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+          }
         }
-        // author included
+        // first name included
       } else {
-        if (firstName == "") {
+        // no middle initial
+        if (!middleInitial) {
+          // no publish date
+          if (!publishDate) {
+            // no platform title
+            if (!platformTitle) {
+              result.innerHTML = `${lastName}, ${firstName}. (n.d.). <i>${workTitle}</i>. Retrieved on ${accessDate} from ${sourceURL}.`;
+              // platform title included
+            } else {
+              result.innerHTML = `${lastName}, ${firstName}. (n.d.). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+            }
+            // publish date included
+          } else {
+            // no platform title
+            if (!platformTitle) {
+              result.innerHTML = `${lastName}, ${firstName}. ${publishDate}. <i>${workTitle}</i>. Retrieved on ${accessDate} from ${sourceURL}.`;
+              // platform title included
+            } else {
+              result.innerHTML = `${lastName}, ${firstName}. ${publishDate}. <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+            }
+          }
+          // middle initial included
+        } else {
+          // no publish date
+          if (!publishDate) {
+            // no platform title
+            if (!platformTitle) {
+              result.innerHTML = `${lastName}, ${firstName} ${middleInitial}. (n.d.). <i>${workTitle}</i>. Retrieved on ${accessDate} from ${sourceURL}.`;
+              // platform title included
+            } else {
+              result.innerHTML = `${lastName}, ${firstName} ${middleInitial}. (n.d.). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+            }
+            // publish date included
+          } else {
+            // no platform title
+            if (!platformTitle) {
+              result.innerHTML = `${lastName}, ${firstName} ${middleInitial}. ${publishDate}. <i>${workTitle}</i>. Retrieved on ${accessDate} from ${sourceURL}.`;
+              // platform title included
+            } else {
+              result.innerHTML = `${lastName}, ${firstName} ${middleInitial}. ${publishDate}. <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+            }
+          }
         }
-        result.innerText = `${lastName},`;
       }
-      break;
+    }
   }
-});
+  event.preventDefault();
+};
 
 /*
 if (lastName.value.length == 0) {

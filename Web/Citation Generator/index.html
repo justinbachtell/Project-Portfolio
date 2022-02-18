@@ -34,6 +34,7 @@
   <body>
     <div class="container">
       <h2 class="title">Citation Generator</h2>
+      <a href=""><button id="reset-form" type="reset">Reset</button></a>
       <div class="result">
         <div class="result__title field-title">Generated Citation</div>
         <div class="result info right">click to copy</div>
@@ -84,7 +85,11 @@
         </div>
         <div class="field">
           <label for="source-url">Source URL:</label>
-          <input type="url" id="source-url" />
+          <input
+            type="url"
+            id="source-url"
+            placeholder="https://www.website.com"
+          />
         </div>
       </div>
 
@@ -94,14 +99,16 @@
           <select name="citation" id="citation-style">
             <option value="" disabled>Choose a citation style</option>
             <option value="apa">APA 7th</option>
-            <option value="mla">MLA</option>
-            <option value="chicago">Chicago 17th</option>
-            <option value="turabian">Turabian 9th</option>
+            <option value="mla" disabled>MLA</option>
+            <option value="chicago" disabled>Chicago 17th</option>
+            <option value="turabian" disabled>Turabian 9th</option>
           </select>
         </div>
       </div>
 
-      <button class="btn generate" id="generate">Generate Citation</button>
+      <button onclick="refreshPage()" class="btn generate" id="generate">
+        Generate Citation
+      </button>
     </div>
 
     <script src="/js/app.js"></script>
