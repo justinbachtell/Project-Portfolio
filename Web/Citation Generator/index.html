@@ -38,26 +38,7 @@
         <div class="result__title field-title">Generated Citation</div>
         <div class="result info right">click to copy</div>
         <div class="result info left">copied</div>
-        <div class="result viewbox" id="result">
-          <p id="author-last"></p>
-          <p id="publisher-one"></p>
-          &nbsp;
-          <p id="author-first"></p>
-          &nbsp;
-          <p id="author-mid"></p>
-          &nbsp;
-          <p id="date"></p>
-          &nbsp;
-          <p id="title"></p>
-          &nbsp;
-          <p id="publisher-two"></p>
-          &nbsp;
-          <p id="platform-title"></p>
-          &nbsp;
-          <p id="accessdate"></p>
-          &nbsp;
-          <p id="source"></p>
-        </div>
+        <div class="result viewbox" id="result"></div>
         <button id="copy-btn" style="--x: 0; --y: 0">
           <i class="far fa-copy"></i>
         </button>
@@ -107,7 +88,20 @@
         </div>
       </div>
 
-      <button class="btn generate" id="generate">Copy Citation</button>
+      <div class="fields">
+        <span class="fields__title field-title">Citation Style </span>
+        <div class="field">
+          <select name="citation" id="citation-style">
+            <option value="" disabled>Choose a citation style</option>
+            <option value="apa">APA 7th</option>
+            <option value="mla">MLA</option>
+            <option value="chicago">Chicago 17th</option>
+            <option value="turabian">Turabian 9th</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="btn generate" id="generate">Generate Citation</button>
     </div>
 
     <script src="/js/app.js"></script>

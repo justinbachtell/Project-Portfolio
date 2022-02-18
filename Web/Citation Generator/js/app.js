@@ -1,9 +1,8 @@
 // Clear console on refresh
 //console.clear();
 
-// Select DOM elements and apply variables
+/* REAL-TIME INNER TEXT
 // Viewbox
-const result = document.getElementById("result");
 const resultAuthorFirst = document.getElementById("author-first");
 const resultAuthorMid = document.getElementById("author-mid");
 const resultAuthorLast = document.getElementById("author-last");
@@ -14,30 +13,34 @@ const resultPublisherOne = document.getElementById("publisher-one");
 const resultPublisherTwo = document.getElementById("publisher-two");
 const resultAccessDate = document.getElementById("accessdate");
 const resultSource = document.getElementById("source");
-// Author's name
-const firstName = document.getElementById("firstname");
-const middleInitial = document.getElementById("midinitial");
-const lastName = document.getElementById("lastname");
-// const fullName = `${lastName}, ${firstName} ${middleInitial}.`;
-const workTitle = document.getElementById("worktitle");
-const platformTitle = document.getElementById("platformtitle");
-const publisher = document.getElementById("publisher");
-const publishDate = document.getElementById("publishdate");
-const accessDate = document.getElementById("dateaccessed");
-const sourceUrl = document.getElementById("source-url");
-const space = " ";
+*/
 
-const elements = document.querySelectorAll(".fields");
+// Select DOM elements and apply variables
+const result = document.getElementById("result");
+const firstName = document.getElementById("firstname").value;
+const middleInitial = document.getElementById("midinitial").value;
+const lastName = document.getElementById("lastname").value;
+const workTitle = document.getElementById("worktitle").value;
+const platformTitle = document.getElementById("platformtitle").value;
+const publisher = document.getElementById("publisher").value;
+const publishDate = document.getElementById("publishdate").value;
+const accessDate = document.getElementById("dateaccessed").value;
+const sourceURL = document.getElementById("source-url").value;
+const citationStyle = document.getElementById("citation-style");
 
 /*
-[firstName, middleInitial, lastName].forEach(function (element) {
-  element.addEventListener("input", function () {
-    result.innerText += element.value;
-  });
-});
+if (document.getElementById("publishdate").value == "") {
+  const publishDate = (document.getElementById("publishdate").value = "n.d.");
+  return publishDate;
+} else {
+  const publishDate = document.getElementById("publishdate").value;
+  return publishDate;
+}
 */
+
 // Button to generate the citation
-//const generateBtn = document.getElementById("generate");
+const generateBtn = document.getElementById("generate");
+
 // Button to copy the citation
 //const copyBtn = document.getElementById("copy-btn");
 // Result viewbox container
@@ -47,8 +50,39 @@ const elements = document.querySelectorAll(".fields");
 // Text shown after copy button is clicked
 //const copiedInfo = document.querySelector(".result.info.left");
 
-const citation = `${lastName}, ${firstName} ${middleInitial}. (${publishDate}). ${workTitle}. ${platformTitle}. ${publisher}. Retrieved on ${accessDate} from ${sourceUrl}.`;
+const citationAPA = `${lastName}, ${firstName} ${middleInitial}. (${publishDate}). ${workTitle}. ${platformTitle}. ${publisher}. Retrieved on ${accessDate} from ${sourceURL}.`;
 
+generateBtn.addEventListener("click", () => {
+  let styles = citationStyle.value;
+  // result.innerText += citationAPA;
+  switch (styles) {
+    case "apa":
+      // no author
+      if (!lastName) {
+        // no publish date
+        if (!publishDate) {
+          // no platform title
+          if (!platformTitle) {
+            result.innerText = `${workTitle}. (n.d.). ${workTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+            // platform title included
+          } else {
+            result.innerText = `${workTitle}. (n.d.). ${workTitle}. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+          }
+          // publish date included
+        } else {
+          result.innerText = `${workTitle}. (${publishDate}).`;
+        }
+        // author included
+      } else {
+        if (firstName == "") {
+        }
+        result.innerText = `${lastName},`;
+      }
+      break;
+  }
+});
+
+/*
 if (lastName.value.length == 0) {
   publisher.addEventListener("input", function (e) {
     resultPublisherOne.innerText = publisher.value + ".";
@@ -94,6 +128,7 @@ accessDate.addEventListener("input", function (e) {
 sourceUrl.addEventListener("input", function (e) {
   resultSource.innerText = " from " + sourceUrl.value + ".";
 });
+*/
 
 /*
 // Boolean that shows copy button when true
@@ -150,7 +185,7 @@ copyBtn.addEventListener("click", () => {
 /*
 // Generate citation when Generate button is clicked
 generateBtn.addEventListener("click", () => {
-  result.innerText = fullName.value;
+  resultAuthorFirst.innerText = fullName.value;
   generatedCitation = true;
   result.innerText = generateCitation(nameResult);
   copyInfo.style.transform = "translateY(0%)";
