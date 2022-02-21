@@ -1,5 +1,5 @@
 // Clear console on refresh
-//console.clear();
+console.clear();
 
 /* REAL-TIME INNER TEXT
 // Viewbox
@@ -32,20 +32,10 @@ const resetForm = document.getElementById("reset-form");
 // Button to generate the citation
 const generateBtn = document.getElementById("generate");
 
-/*
-const generateCitation = () => {
-  styles = citationStyle.value;
-  switch (styles) {
-    case "apa":
-      citationStyleAPA();
-      break;
-  }
-};
-*/
-
 // Display citation with chosen citation style
 window.onload = generateCitation = () => {
   result.innerHTML = "";
+  generatedCitation = true;
   styles = citationStyle.value;
   switch (styles) {
     case "apa":
@@ -54,17 +44,7 @@ window.onload = generateCitation = () => {
   }
 };
 
-/*
-// Display citation with chosen citation style
-generateBtn.addEventListener("click", () => {
-  styles = citationStyle.value;
-  switch (styles) {
-    case "apa":
-      citationStyleAPA();
-      break;
-  }
-});
-*/
+// PUT GENERATECITATION FUNCTION INTO REFRESH AND CLEAR PAGE
 
 // Function to refresh page prior to clicking generate citation
 const refreshPage = () => {
@@ -79,18 +59,91 @@ const clearPage = () => {
   result.innerHTML = "";
   firstName.reset();
   middleInitial.reset();
+  generatedCitation = false;
 };
 
 // Button to copy the citation
-//const copyBtn = document.getElementById("copy-btn");
+const copyBtn = document.getElementById("copy-btn");
 // Result viewbox container
-//const resultViewbox = document.querySelector(".result");
+const resultViewbox = document.querySelector(".result");
 // Text shown after generate button is clicked
-//const copyInfo = document.querySelector(".result.info.right");
+const copyInfo = document.querySelector(".result.info.right");
 // Text shown after copy button is clicked
-//const copiedInfo = document.querySelector(".result.info.left");
+const copiedInfo = document.querySelector(".result.info.left");
 
-// APA Citation Style
+// Boolean that shows copy button when true
+let generatedCitation = false;
+
+// Update CSS of the copy button
+// Identify boundary of result viewbox
+let resultViewboxBoundary = {
+  left: resultViewbox.getBoundingClientRect().left,
+  top: resultViewbox.getBoundingClientRect().top,
+};
+// Update position of copy button to mouse location
+resultViewbox.addEventListener("mousemove", (e) => {
+  resultViewboxBoundary = {
+    left: resultViewbox.getBoundingClientRect().left,
+    top: resultViewbox.getBoundingClientRect().top,
+  };
+  if (generatedCitation) {
+    copyBtn.style.opacity = "1";
+    copyBtn.style.pointerEvents = "all";
+    copyBtn.style.setProperty("--x", `${e.x - resultViewboxBoundary.left}px`);
+    copyBtn.style.setProperty("--y", `${e.y - resultViewboxBoundary.left}px`);
+  } else {
+    copyBtn.style.opacity = "0";
+    copyBtn.style.pointerEvents = "none";
+  }
+});
+window.addEventListener("resize", (e) => {
+  resultViewboxBoundary = {
+    left: resultViewbox.getBoundingClientRect().left,
+    top: resultViewbox.getBoundingClientRect().top,
+  };
+});
+
+// Copy citation to clipboard
+copyBtn.addEventListener("click", () => {
+  const textarea = document.createElement("textarea");
+  const citation = result.innerText;
+  if (!citation || citation == "Click Generate") {
+    return;
+  }
+  textarea.value = citation;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand("copy");
+  textarea.remove();
+
+  copyInfo.style.transform = "translateY(200%)";
+  copyInfo.style.opacity = "0";
+  copyInfo.style.transform = "translateY(0%)";
+  copyInfo.style.opacity = "0.75";
+});
+
+/*
+// Generate citation when Generate button is clicked
+generateBtn.addEventListener("click", () => {
+  resultAuthorFirst.innerText = fullName.value;
+  generatedCitation = true;
+  result.innerText = generateCitation(nameResult);
+  copyInfo.style.transform = "translateY(0%)";
+  copyInfo.style.opacity = "0.75";
+  copiedInfo.style.transform = "translateY(200%)";
+  copiedInfo.style.opacity = "0";
+});
+
+// Function to generate citation and display it
+function generateCitation(nameResult) {
+  let nameResult = fullName;
+  let generatedCitation = "";
+  generatedCitation += nameResult;
+  return generatedCitation;
+}
+*/
+
+/***** APA Citation Style *****/
 const citationStyleAPA = (event) => {
   if (!lastName && !workTitle) {
     result.innerHTML = "";
@@ -236,77 +289,4 @@ accessDate.addEventListener("input", function (e) {
 sourceUrl.addEventListener("input", function (e) {
   resultSource.innerText = " from " + sourceUrl.value + ".";
 });
-*/
-
-/*
-// Boolean that shows copy button when true
-let generatedCitation = false;
-
-// Update CSS of the copy button
-// Identify boundary of result viewbox
-let resultViewboxBoundary = {
-  left: resultViewbox.getBoundingClientRect().left,
-  top: resultViewbox.getBoundingClientRect().top,
-};
-// Update position of copy button to mouse location
-resultViewbox.addEventListener("mousemove", (e) => {
-  resultViewboxBoundary = {
-    left: resultViewbox.getBoundingClientRect().left,
-    top: resultViewbox.getBoundingClientRect().top,
-  };
-  if (generatedCitation) {
-    copyBtn.style.opacity = "1";
-    copyBtn.style.pointerEvents = "all";
-    copyBtn.style.setProperty("--x", `${e.x - resultViewboxBoundary.left}px`);
-    copyBtn.style.setProperty("--y", `${e.y - resultViewboxBoundary.left}px`);
-  } else {
-    copyBtn.style.opacity = "0";
-    copyBtn.style.pointerEvents = "none";
-  }
-});
-window.addEventListener("resize", (e) => {
-  resultViewboxBoundary = {
-    left: resultViewbox.getBoundingClientRect().left,
-    top: resultViewbox.getBoundingClientRect().top,
-  };
-});
-
-// Copy citation to clipboard
-copyBtn.addEventListener("click", () => {
-  const textarea = document.createElement("textarea");
-  const citation = result.innerText;
-  if (!citation || citation == "Click Generate") {
-    return;
-  }
-  textarea.value = citation;
-  document.body.appendChild(textarea);
-  textarea.select();
-  document.execCommand("copy");
-  textarea.remove();
-
-  copyInfo.style.transform = "translateY(200%)";
-  copyInfo.style.opacity = "0";
-  copyInfo.style.transform = "translateY(0%)";
-  copyInfo.style.opacity = "0.75";
-});
-*/
-/*
-// Generate citation when Generate button is clicked
-generateBtn.addEventListener("click", () => {
-  resultAuthorFirst.innerText = fullName.value;
-  generatedCitation = true;
-  result.innerText = generateCitation(nameResult);
-  copyInfo.style.transform = "translateY(0%)";
-  copyInfo.style.opacity = "0.75";
-  copiedInfo.style.transform = "translateY(200%)";
-  copiedInfo.style.opacity = "0";
-});
-
-// Function to generate citation and display it
-function generateCitation(nameResult) {
-  let nameResult = fullName;
-  let generatedCitation = "";
-  generatedCitation += nameResult;
-  return generatedCitation;
-}
 */

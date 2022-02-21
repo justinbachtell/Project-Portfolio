@@ -40,8 +40,9 @@
         <div class="result info right">click to copy</div>
         <div class="result info left">copied</div>
         <div class="result viewbox" id="result"></div>
-        <button id="copy-btn" style="--x: 0; --y: 0">
-          <i class="far fa-copy"></i>
+        <a href="/images/copy-icon.svg"></a>
+        <button id="copy-btn">
+          <img src="/images/copy-icon.svg" height="15px" width="15px" />
         </button>
       </div>
 
@@ -94,10 +95,22 @@
       </div>
 
       <div class="fields">
-        <span class="fields__title field-title">Citation Style </span>
+        <span class="fields__title field-title">Citation Type & Style </span>
+        <div class="field">
+          <select name="source-type" id="source-type">
+            <option value="" selected disabled>Choose a source type</option>
+            <option value="type-website">Website</option>
+            <option value="type-book" disabled>Book</option>
+            <option value="type-journal" disabled>Journal</option>
+            <option value="type-video" disabled>Video</option>
+            <option value="type-newspaper-magazine" disabled>
+              Newspaper or Magazine
+            </option>
+          </select>
+        </div>
         <div class="field">
           <select name="citation" id="citation-style">
-            <option value="" disabled>Choose a citation style</option>
+            <option value="" selected disabled>Choose a citation style</option>
             <option value="apa">APA 7th</option>
             <option value="mla" disabled>MLA</option>
             <option value="chicago" disabled>Chicago 17th</option>
