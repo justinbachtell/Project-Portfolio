@@ -31,48 +31,52 @@ const resetForm = document.getElementById("reset-form");
 
 // Button to generate the citation
 const generateBtn = document.getElementById("generate");
-
-// Display citation with chosen citation style
-window.onload = generateCitation = () => {
-  result.innerHTML = "";
-  generatedCitation = true;
-  styles = citationStyle.value;
-  switch (styles) {
-    case "apa":
-      citationStyleAPA();
-      break;
-  }
-};
-
-// PUT GENERATECITATION FUNCTION INTO REFRESH AND CLEAR PAGE
-
-// Function to refresh page prior to clicking generate citation
-const refreshPage = () => {
-  if (!workTitle) {
-    document.location.reload();
-  } else {
-    document.location.reload();
-  }
-};
-
-const clearPage = () => {
-  result.innerHTML = "";
-  firstName.reset();
-  middleInitial.reset();
-  generatedCitation = false;
-};
+let citationCopyBtn = false;
 
 // Button to copy the citation
 const copyBtn = document.getElementById("copy-btn");
 // Result viewbox container
 const resultViewbox = document.querySelector(".result");
+// Mouse cursor
+let mouseCursor = document.querySelector(".cursor");
 // Text shown after generate button is clicked
-const copyInfo = document.querySelector(".result.info.right");
+const copiedInfo = document.querySelector(".result.info.right");
 // Text shown after copy button is clicked
-const copiedInfo = document.querySelector(".result.info.left");
+const copyInfo = document.querySelector(".result.info.left");
 
-// Boolean that shows copy button when true
-let generatedCitation = false;
+// Display citation with chosen citation style
+window.onload = generateCitation = () => {
+  result.innerHTML = "";
+  citationCopyBtn = false;
+  copyInfo.style.opacity = 0;
+  styles = citationStyle.value;
+  switch (styles) {
+    case "apa":
+      citationStyleAPA();
+      citationCopyBtn = true;
+      copyInfo.style.opacity = 1;
+      break;
+  }
+};
+
+// Function to refresh page prior to clicking generate citation
+const refreshPage = () => {
+  document.location.reload();
+};
+
+const cursorRounded = document.querySelector(".rounded");
+const cursorPointed = document.querySelector(".pointed");
+
+const moveCursor = (e) => {
+  const mouseY = e.pageY;
+  const mouseX = e.pageX;
+
+  cursorRounded.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+
+  cursorPointed.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+};
+
+window.addEventListener("mousemove", moveCursor);
 
 // Update CSS of the copy button
 // Identify boundary of result viewbox
@@ -82,15 +86,24 @@ let resultViewboxBoundary = {
 };
 // Update position of copy button to mouse location
 resultViewbox.addEventListener("mousemove", (e) => {
+  const mouseX = e.pageX;
+  const mouseY = e.pageY;
+
   resultViewboxBoundary = {
     left: resultViewbox.getBoundingClientRect().left,
     top: resultViewbox.getBoundingClientRect().top,
   };
-  if (generatedCitation) {
+  if (citationCopyBtn) {
     copyBtn.style.opacity = "1";
     copyBtn.style.pointerEvents = "all";
-    copyBtn.style.setProperty("--x", `${e.x - resultViewboxBoundary.left}px`);
-    copyBtn.style.setProperty("--y", `${e.y - resultViewboxBoundary.left}px`);
+    copyBtn.style.setProperty(
+      "--x",
+      `${mouseX - resultViewboxBoundary.left}px`
+    );
+    copyBtn.style.setProperty(
+      "--y",
+      `${mouseY - resultViewboxBoundary.left}px`
+    );
   } else {
     copyBtn.style.opacity = "0";
     copyBtn.style.pointerEvents = "none";
@@ -103,45 +116,36 @@ window.addEventListener("resize", (e) => {
   };
 });
 
+// Delay
+const delay = (time) => {
+  return new Promise((resolve) => setTimeout(resolve, time));
+};
+
+// Change Viewbox background when clicked to copy
+async function copyClick() {
+  result.style.background = "rgba(207, 231, 253, 0.981)";
+  result.style.color = "black";
+  copiedInfo.style.opacity = 1;
+  copyInfo.style.color = "white";
+  await delay(100);
+  result.style.background = "white";
+  result.style.color = "black";
+  await delay(4000);
+  copiedInfo.style.opacity = 0;
+  copyInfo.style.color = "black";
+}
+
 // Copy citation to clipboard
 copyBtn.addEventListener("click", () => {
+  copyClick();
   const textarea = document.createElement("textarea");
   const citation = result.innerText;
-  if (!citation || citation == "Click Generate") {
-    return;
-  }
-  textarea.value = citation;
-  document.body.appendChild(textarea);
-  textarea.select();
-  document.execCommand("copy");
-  textarea.remove();
+  citation.select();
+  citation.setSelectionRange(0, 99999);
 
-  copyInfo.style.transform = "translateY(200%)";
-  copyInfo.style.opacity = "0";
-  copyInfo.style.transform = "translateY(0%)";
-  copyInfo.style.opacity = "0.75";
+  // Copy text inside citation
+  navigator.clipboard.writeText(citation.value);
 });
-
-/*
-// Generate citation when Generate button is clicked
-generateBtn.addEventListener("click", () => {
-  resultAuthorFirst.innerText = fullName.value;
-  generatedCitation = true;
-  result.innerText = generateCitation(nameResult);
-  copyInfo.style.transform = "translateY(0%)";
-  copyInfo.style.opacity = "0.75";
-  copiedInfo.style.transform = "translateY(200%)";
-  copiedInfo.style.opacity = "0";
-});
-
-// Function to generate citation and display it
-function generateCitation(nameResult) {
-  let nameResult = fullName;
-  let generatedCitation = "";
-  generatedCitation += nameResult;
-  return generatedCitation;
-}
-*/
 
 /***** APA Citation Style *****/
 const citationStyleAPA = (event) => {
@@ -240,7 +244,6 @@ const citationStyleAPA = (event) => {
       }
     }
   }
-  event.preventDefault();
 };
 
 /*

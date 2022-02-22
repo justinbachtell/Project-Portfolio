@@ -33,17 +33,22 @@
   </head>
   <body>
     <div class="container">
-      <h2 class="title">Citation Generator</h2>
-      <a href=""><button id="reset-form" type="reset">Reset</button></a>
+      <div class="heading">
+        <h2 class="title">Citation Generator</h2>
+        <a href=""><button id="reset-form" type="reset">Reset</button></a>
+      </div>
+      <span class="result__title field-title">Generated Citation</span>
       <div class="result">
-        <div class="result__title field-title">Generated Citation</div>
-        <div class="result info right">click to copy</div>
-        <div class="result info left">copied</div>
+        <div class="result info left">click to copy</div>
+        <div class="result info right">copied</div>
         <div class="result viewbox" id="result"></div>
-        <a href="/images/copy-icon.svg"></a>
-        <button id="copy-btn">
+        <button id="copy-btn" style="--x: 0; --y: 0">
           <img src="/images/copy-icon.svg" height="15px" width="15px" />
         </button>
+        <!--
+          <div class="rounded"></div>
+          <div class="pointed"></div>
+        -->
       </div>
 
       <div class="fields">
@@ -62,7 +67,7 @@
         </div>
       </div>
 
-      <div class="publication">
+      <div class="fields">
         <span class="publication__title field-title">Publication Info</span>
         <div class="field">
           <label for="worktitle">Title of Work:</label>
@@ -95,7 +100,7 @@
       </div>
 
       <div class="fields">
-        <span class="fields__title field-title">Citation Type & Style </span>
+        <span class="source__title field-title">Citation Type & Style </span>
         <div class="field">
           <select name="source-type" id="source-type">
             <option value="" selected disabled>Choose a source type</option>
