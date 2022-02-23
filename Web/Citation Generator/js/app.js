@@ -1,3 +1,11 @@
+/* TODO: 
+  - Allow only a year to be entered for publishDate
+    - Option 1: Code logic
+    - Option 2: bootstrap-datepicker
+  - Retain text formatting when copying to clipboard
+  - Add additional citation types and styles
+*/
+
 // Clear console on refresh
 console.clear();
 
@@ -35,6 +43,8 @@ window.onload = generateCitation = () => {
   result.innerHTML = "";
   citationCopyBtn = false;
   copyInfo.style.opacity = 0;
+  formatPublishDate();
+  formatAccessDate();
   styles = citationStyle.value;
   switch (styles) {
     case "apa":
@@ -82,7 +92,7 @@ window.addEventListener("resize", (e) => {
 // Copy citation in clipboard
 copyBtn.addEventListener("click", () => {
   const textarea = document.createElement("textarea");
-  const citation = result.innerHTML;
+  const citation = result.innerText;
   if (!citation || citation == "CLICK GENERATE") {
     return;
   }
@@ -93,7 +103,7 @@ copyBtn.addEventListener("click", () => {
 
   // Copy text inside citation
   navigator.clipboard
-    .readText(textarea.value)
+    .writeText(textarea.value)
     .then(() => {
       console.log(`Copied to clipboard: "${textarea.value}"`);
     })
@@ -105,6 +115,28 @@ copyBtn.addEventListener("click", () => {
 
   copyClick();
 });
+
+const formatPublishDate = () => {
+  let date = new Date(publishDate);
+  let month = date.toLocaleString("default", { month: "long" });
+  let day = date.getDate() + 1;
+  let year = date.getFullYear();
+
+  let fullDate = `${year}, ${month} ${day}`;
+
+  return fullDate;
+};
+
+const formatAccessDate = () => {
+  let date = new Date(accessDate);
+  let month = date.toLocaleString("default", { month: "long" });
+  let day = date.getDate() + 1;
+  let year = date.getFullYear();
+
+  let fullDate = `${month} ${day}, ${year}`;
+
+  return fullDate;
+};
 
 // Delay
 const delay = (time) => {
@@ -136,19 +168,31 @@ const citationStyleAPA = (event) => {
       if (!publishDate) {
         // no platform title
         if (!platformTitle) {
-          result.innerHTML = `${publisher}. (n.d.). <i>${workTitle}</i>. Retrieved on ${accessDate} from ${sourceURL}.`;
+          result.innerHTML = `${publisher}. (n.d.). <i>${workTitle}</i>. Retrieved on ${formatAccessDate(
+            accessDate
+          )}, from ${sourceURL}.`;
           // platform title included
         } else {
-          result.innerHTML = `${publisher}. (n.d.). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+          result.innerHTML = `${publisher}. (n.d.). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${formatAccessDate(
+            accessDate
+          )}, from ${sourceURL}.`;
         }
         // publish date included
       } else {
         // no platform title
         if (!platformTitle) {
-          result.innerHTML = `${publisher}. (${publishDate}). <i>${workTitle}</i>. Retrieved on ${accessDate} from ${sourceURL}.`;
+          result.innerHTML = `${publisher}. (${formatPublishDate(
+            publishDate
+          )}). <i>${workTitle}</i>. Retrieved on ${formatAccessDate(
+            accessDate
+          )}, from ${sourceURL}.`;
           // platform title included
         } else {
-          result.innerHTML = `${publisher}. (${publishDate}). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+          result.innerHTML = `${publisher}. (${formatPublishDate(
+            publishDate
+          )}). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${formatAccessDate(
+            accessDate
+          )}, from ${sourceURL}.`;
         }
       }
       // author included
@@ -159,19 +203,31 @@ const citationStyleAPA = (event) => {
         if (!publishDate) {
           // no platform title
           if (!platformTitle) {
-            result.innerHTML = `${lastName}. (n.d.). <i>${workTitle}</i>. Retrieved on ${accessDate} from ${sourceURL}.`;
+            result.innerHTML = `${lastName}. (n.d.). <i>${workTitle}</i>. Retrieved on ${formatAccessDate(
+              accessDate
+            )}, from ${sourceURL}.`;
             // platform title included
           } else {
-            result.innerHTML = `${lastName}. (n.d.). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+            result.innerHTML = `${lastName}. (n.d.). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${formatAccessDate(
+              accessDate
+            )}, from ${sourceURL}.`;
           }
           // publish date included
         } else {
           // no platform title
           if (!platformTitle) {
-            result.innerHTML = `${lastName}. ${publishDate}. <i>${workTitle}</i>. Retrieved on ${accessDate} from ${sourceURL}.`;
+            result.innerHTML = `${lastName}. (${formatPublishDate(
+              publishDate
+            )}). <i>${workTitle}</i>. Retrieved on ${formatAccessDate(
+              accessDate
+            )}, from ${sourceURL}.`;
             // platform title included
           } else {
-            result.innerHTML = `${lastName}. ${publishDate}. <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+            result.innerHTML = `${lastName}. (${formatPublishDate(
+              publishDate
+            )}). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${formatAccessDate(
+              accessDate
+            )}, from ${sourceURL}.`;
           }
         }
         // first name included
@@ -182,19 +238,31 @@ const citationStyleAPA = (event) => {
           if (!publishDate) {
             // no platform title
             if (!platformTitle) {
-              result.innerHTML = `${lastName}, ${firstName}. (n.d.). <i>${workTitle}</i>. Retrieved on ${accessDate} from ${sourceURL}.`;
+              result.innerHTML = `${lastName}, ${firstName}. (n.d.). <i>${workTitle}</i>. Retrieved on ${formatAccessDate(
+                accessDate
+              )}, from ${sourceURL}.`;
               // platform title included
             } else {
-              result.innerHTML = `${lastName}, ${firstName}. (n.d.). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+              result.innerHTML = `${lastName}, ${firstName}. (n.d.). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${formatAccessDate(
+                accessDate
+              )}, from ${sourceURL}.`;
             }
             // publish date included
           } else {
             // no platform title
             if (!platformTitle) {
-              result.innerHTML = `${lastName}, ${firstName}. ${publishDate}. <i>${workTitle}</i>. Retrieved on ${accessDate} from ${sourceURL}.`;
+              result.innerHTML = `${lastName}, ${firstName}. (${formatPublishDate(
+                publishDate
+              )}). <i>${workTitle}</i>. Retrieved on ${formatAccessDate(
+                accessDate
+              )}, from ${sourceURL}.`;
               // platform title included
             } else {
-              result.innerHTML = `${lastName}, ${firstName}. ${publishDate}. <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+              result.innerHTML = `${lastName}, ${firstName}. (${formatPublishDate(
+                publishDate
+              )}). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${formatAccessDate(
+                accessDate
+              )}, from ${sourceURL}.`;
             }
           }
           // middle initial included
@@ -203,19 +271,31 @@ const citationStyleAPA = (event) => {
           if (!publishDate) {
             // no platform title
             if (!platformTitle) {
-              result.innerHTML = `${lastName}, ${firstName} ${middleInitial}. (n.d.). <i>${workTitle}</i>. Retrieved on ${accessDate} from ${sourceURL}.`;
+              result.innerHTML = `${lastName}, ${firstName} ${middleInitial}. (n.d.). <i>${workTitle}</i>. Retrieved on ${formatAccessDate(
+                accessDate
+              )}, from ${sourceURL}.`;
               // platform title included
             } else {
-              result.innerHTML = `${lastName}, ${firstName} ${middleInitial}. (n.d.). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+              result.innerHTML = `${lastName}, ${firstName} ${middleInitial}. (n.d.). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${formatAccessDate(
+                accessDate
+              )}, from ${sourceURL}.`;
             }
             // publish date included
           } else {
             // no platform title
             if (!platformTitle) {
-              result.innerHTML = `${lastName}, ${firstName} ${middleInitial}. ${publishDate}. <i>${workTitle}</i>. Retrieved on ${accessDate} from ${sourceURL}.`;
+              result.innerHTML = `${lastName}, ${firstName} ${middleInitial}. (${formatPublishDate(
+                publishDate
+              )}). <i>${workTitle}</i>. Retrieved on ${formatAccessDate(
+                accessDate
+              )}, from ${sourceURL}.`;
               // platform title included
             } else {
-              result.innerHTML = `${lastName}, ${firstName} ${middleInitial}. ${publishDate}. <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${accessDate} from ${sourceURL}.`;
+              result.innerHTML = `${lastName}, ${firstName} ${middleInitial}. (${formatPublishDate(
+                publishDate
+              )}). <i>${workTitle}</i>. ${platformTitle}. Retrieved on ${formatAccessDate(
+                accessDate
+              )}, from ${sourceURL}.`;
             }
           }
         }

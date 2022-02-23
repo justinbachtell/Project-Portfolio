@@ -21,8 +21,6 @@
 
     <link rel="stylesheet" href="/css/styles.css" />
 
-    <link href="/dist/output.css" rel="stylesheet" />
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -79,11 +77,19 @@
         </div>
         <div class="field">
           <label for="publishdate">Published Date:</label>
-          <input type="date" id="publishdate" />
+          <input
+            type="date"
+            id="publishdate"
+            pattern="[0-9]{4}, [a-z]{4,8} [0-9]{2}"
+          />
         </div>
         <div class="field">
           <label for="dateaccessed">Date Accessed:</label>
-          <input type="date" id="dateaccessed" />
+          <input
+            type="date"
+            id="dateaccessed"
+            pattern="[0-9]{4}, [a-z]{4,8} [0-9]{2}"
+          />
         </div>
         <div class="field">
           <label for="source-url">Source URL:</label>

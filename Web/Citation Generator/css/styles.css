@@ -89,6 +89,8 @@ h2.title {
 
 #result {
   justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #result p {
