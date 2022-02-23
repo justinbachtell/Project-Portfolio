@@ -188,7 +188,7 @@ h2.title {
   float: left;
 }
 
-.fields__title {
+.source__title {
   margin-top: 7px;
 }
 
@@ -239,6 +239,18 @@ h2.title {
   border-radius: 10px;
   text-align: center;
   background-color: aliceblue;
+}
+
+.field #publishyear,
+.field #accessyear {
+  width: 50px;
+  margin-right: 5px;
+}
+
+.field #publishday,
+.field #accessday {
+  width: 40px;
+  margin-left: 5px;
 }
 
 .field input:active {
