@@ -1,0 +1,136 @@
+<!-- 
+  Author: Justin J. Bachtell
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Justin Bachtell" />
+    <meta
+      name="description"
+      content="Easy, quick, ad-free citation generator for APA 7."
+    />
+    <meta
+      name="keywords"
+      content="HTML, CSS, JavaScript, citation, apa, american psychological association, API"
+    />
+    <title>Citation Generator</title>
+
+    <link rel="stylesheet" href="/css/styles.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="heading">
+        <h2 class="title">Citation Generator</h2>
+        <a href=""><button id="reset-form" type="reset">Reset</button></a>
+      </div>
+      <span class="result__title field-title">Generated Citation</span>
+      <div class="result">
+        <div class="result info left">click to copy</div>
+        <div class="result info right">copied</div>
+        <div class="result viewbox" id="result"></div>
+        <button class="copy" id="copy-btn" style="--x: 0; --y: 0">
+          <img src="/images/copy-icon.svg" height="15px" width="15px" />
+        </button>
+      </div>
+
+      <div class="fields">
+        <span class="fields__title field-title">Author(s)</span>
+        <div class="field">
+          <label for="firstname">Author's First Name:</label>
+          <input type="text" id="firstname" />
+        </div>
+        <div class="field">
+          <label for="midinitial">Author's Middle Initial:</label>
+          <input type="text" id="midinitial" />
+        </div>
+        <div class="field">
+          <label for="lastname">Author's Last Name:</label>
+          <input type="text" id="lastname" />
+        </div>
+      </div>
+
+      <div class="fields">
+        <span class="publication__title field-title">Publication Info</span>
+        <div class="field">
+          <label for="worktitle">Title of Work:</label>
+          <input type="text" id="worktitle" />
+        </div>
+        <div class="field">
+          <label for="platformtitle">Journal/Website Title:</label>
+          <input type="text" id="platformtitle" />
+        </div>
+        <div class="field">
+          <label for="publisher">Publisher:</label>
+          <input type="text" id="publisher" />
+        </div>
+        <div class="field">
+          <label for="publishdate">Published Date:</label>
+          <input
+            type="date"
+            id="publishdate"
+            pattern="[0-9]{4}, [a-z]{4,8} [0-9]{2}"
+          />
+        </div>
+        <div class="field">
+          <label for="dateaccessed">Date Accessed:</label>
+          <input
+            type="date"
+            id="dateaccessed"
+            pattern="[0-9]{4}, [a-z]{4,8} [0-9]{2}"
+          />
+        </div>
+        <div class="field">
+          <label for="source-url">Source URL:</label>
+          <input
+            type="url"
+            id="source-url"
+            placeholder="https://www.website.com"
+          />
+        </div>
+      </div>
+
+      <div class="fields">
+        <span class="source__title field-title">Citation Type & Style </span>
+        <div class="field">
+          <select name="source-type" id="source-type">
+            <option value="" selected disabled>Choose a source type</option>
+            <option value="type-website">Website</option>
+            <option value="type-book" disabled>Book</option>
+            <option value="type-journal" disabled>Journal</option>
+            <option value="type-video" disabled>Video</option>
+            <option value="type-newspaper-magazine" disabled>
+              Newspaper or Magazine
+            </option>
+          </select>
+        </div>
+        <div class="field">
+          <select name="citation" id="citation-style">
+            <option value="" selected disabled>Choose a citation style</option>
+            <option value="apa">APA 7th</option>
+            <option value="mla" disabled>MLA</option>
+            <option value="chicago" disabled>Chicago 17th</option>
+            <option value="turabian" disabled>Turabian 9th</option>
+          </select>
+        </div>
+      </div>
+
+      <button onclick="refreshPage()" class="btn generate" id="generate">
+        Generate Citation
+      </button>
+    </div>
+
+    <script src="/js/app.js"></script>
+  </body>
+</html>
