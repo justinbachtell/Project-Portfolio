@@ -28,12 +28,19 @@ const jobSchema = new Schema({
   salary: String,
   description: String,
   location: String,
-  reviews: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Review",
-    },
-  ],
+  ratings: {
+    overallRating: Number,
+    cultureValues: Number,
+    diversity: Number,
+    worklifeBalance: Number,
+    management: Number,
+    compensationBenefits: Number,
+    careerOpportunities: Number,
+  },
+  reviews: {
+    type: Schema.Types.ObjectId,
+    ref: "Review",
+  },
 });
 
 module.exports = mongoose.model("Job", jobSchema);

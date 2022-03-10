@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Job</title>
+  </head>
+  <body>
+    <h1>Edit <%= job.title %></h1>
+    <form action="/jobs" method="post">
+      <div>
+        <label for="title">Job Title</label>
+        <input
+          type="text"
+          id="title"
+          name="job[title]"
+          value="<%= job.title %>"
+        />
+      </div>
+      <div>
+        <label for="location">Location</label>
+        <input
+          type="text"
+          id="location"
+          name="job[location]"
+          value="<%= job.location %>"
+        />
+      </div>
+      <button>Update Job</button>
+    </form>
+    <a href="/jobs">All Jobs</a>
+    <a href="/jobs/<%= job._id %>">Back to <%= job.title %></a>
+  </body>
+</html>

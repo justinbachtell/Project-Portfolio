@@ -4,11 +4,21 @@
 const dotenv = require("dotenv").config();
 
 /************************
- * EXPRESS
+ * CORE VARIABLES
  ************************/
 const express = require("express");
 const app = express();
+const path = require("path");
+const mongoose = require("mongoose");
+const methodOverride = require("method-override");
+// const ejsMate = require("ejs-mate");
+// const session = require("express-session");
 
+// const MongoDBStore = require("connect-mongo")(session);
+
+/************************
+ * EXPRESS
+ ************************/
 // listen to port
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
@@ -21,30 +31,8 @@ app.get("/", (req, res) => {
 });
 
 /************************
- * REMBEDDED JAVASCRIPT TEMPLATES (EJS)
- ************************/
-const path = require("path");
-
-// set path
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
-
-// render code from index.ejs
-app.get("/", (req, res) => {
-  res.render("index");
-});
-
-//
-app.get("/makejob", async (req, res) => {
-  const job = new Job({ title: "My Job", description: "The best job" });
-  await job.save();
-  res.send(job);
-});
-
-/************************
  * MONGOOSE
  ************************/
-const mongoose = require("mongoose");
 const Job = require("./models/job");
 
 // connect to mongodb
@@ -57,6 +45,53 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection error:"));
 db.once("open", () => {
   console.log("Database connected.");
+});
+
+/************************
+ * REMBEDDED JAVASCRIPT TEMPLATES (EJS)
+ ************************/
+// set path
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+// parse data into url
+app.use(express.urlencoded({ extended: true }));
+
+// overrides form action methods
+app.use(methodOverride("_method"));
+
+// render code from home.ejs
+app.get("/", (req, res) => {
+  res.render("home");
+});
+
+// render list of jobs page
+app.get("/jobs", async (req, res) => {
+  const jobs = await Job.find({});
+  res.render("jobs/index", { jobs });
+});
+
+// render create new job page
+app.get("/jobs/new", (req, res) => {
+  res.render("jobs/new");
+});
+
+// post new job
+app.post("/jobs", async (req, res) => {
+  const job = new Job(req.body.job);
+  await job.save();
+  res.redirect(`/jobs/${job._id}`);
+});
+
+// render page to view job
+app.get("/jobs/:id", async (req, res) => {
+  const job = await Job.findById(req.params.id);
+  res.render("jobs/show", { job });
+});
+
+app.get("/jobs/:id/edit", async (req, res) => {
+  const job = await Job.findById(req.params.id);
+  res.render("jobs/edit", { job });
 });
 
 /************************
