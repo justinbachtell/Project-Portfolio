@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New Job</title>
-  </head>
-  <body>
-    <form action="/jobs" method="post">
-      <div>
-        <label for="title">Job Title</label>
-        <input type="text" id="title" name="job[title]" />
-      </div>
-      <div>
-        <label for="location">Location</label>
-        <input type="text" id="location" name="job[location]" />
-      </div>
-      <button>Submit Job</button>
-    </form>
-    <a href="/jobs">All Jobs</a>
-  </body>
-</html>
+<% layout('layouts/head') %>
+
+<form action="/jobs" method="post">
+  <div>
+    <label for="title">Job Title</label>
+    <input type="text" id="title" name="job[title]" />
+  </div>
+  <div>
+    <label for="location">Location</label>
+    <input type="text" id="location" name="job[location]" />
+  </div>
+  <button>Submit Job</button>
+</form>
+<a href="/jobs">All Jobs</a>

@@ -43,7 +43,7 @@ const seedDb = async () => {
   await Job.deleteMany({});
 
   // number of random jobs to generate
-  let n = 3;
+  let n = 10;
 
   // loop to generate n number of random jobs
   for (let i = 0; i < n; i++) {

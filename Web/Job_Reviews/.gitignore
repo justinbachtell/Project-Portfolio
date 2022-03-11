@@ -41,3 +41,4 @@ variables.env
 credentials.env
 credentials.yml
 /node_modules
+/views/layouts/navbar.ejs
