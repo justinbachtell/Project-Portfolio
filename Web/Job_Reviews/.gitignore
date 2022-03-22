@@ -42,4 +42,3 @@ credentials.env
 credentials.yml
 /node_modules
 /views/layouts/navbar.ejs
-/src/css
